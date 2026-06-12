@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --color-primary: #facc15;
+  --color-primary-dark: #eab308;
+  --color-dark: #0a0a0a;
+  --color-dark-card: #18181b;
+  --color-dark-border: #27272a;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #facc15 #18181b;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #18181b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #facc15;
+    border-radius: 3px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-zinc-950 text-white font-sans;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(250, 204, 21, 0.3);
+    color: white;
+  }
+}
+
+@layer base {
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 9999;
+    padding: 8px 16px;
+    background: #facc15;
+    color: black;
+    font-weight: 600;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #facc15;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-zinc-900/60 backdrop-blur-lg border border-zinc-800/50 rounded-2xl;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-16;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-yellow-300 bg-clip-text text-transparent;
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.15);
+  }
+
+  .glow-yellow-lg {
+    box-shadow: 0 0 60px rgba(250, 204, 21, 0.2);
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+    color: transparent;
+  }
+}
