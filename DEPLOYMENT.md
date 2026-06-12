@@ -1,76 +1,66 @@
-# Deployment Guide — Varun B P Portfolio
+# Deployment Guide
 
-## Option 1: Vercel (Recommended — ~1 minute)
+## Prerequisites
 
-1. Push this repo to GitHub
-2. Go to https://vercel.com/new
-3. Import your GitHub repository
-4. Vercel auto-detects Vite — **no config needed**
-5. Click **Deploy**
-6. Your site is live at `https://yourproject.vercel.app`
+- GitHub account
+- Vercel account (free)
 
-## Option 2: Netlify
+## Step 1: Create GitHub Repository
 
-1. Run `npm run build` locally
-2. Go to https://app.netlify.com/drop
-3. Drag & drop the `dist/` folder
-4. Your site is live instantly
+1. Go to https://github.com/new
+2. Repository name: `varun-portfolio`
+3. Visibility: Public
+4. Do NOT initialize with README (already exists)
+5. Click "Create repository"
 
-Or connect GitHub repo for auto-deploy:
-1. Push to GitHub
-2. Netlify → New site → Import from Git
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-
-## Option 3: GitHub Pages
-
-1. In `vite.config.js`, add: `base: '/your-repo-name/'`
-2. Push to GitHub
-3. Go to repo Settings → Pages
-4. Source: GitHub Actions
-5. Create `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-on:
-  push:
-    branches: [main]
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-## Option 4: Local Preview with Tunnel
+## Step 2: Push to GitHub
 
 ```bash
-npm run dev          # → localhost:5173
-npx ngrok http 5173  # → public URL (requires ngrok auth token)
+# From project directory
+git remote add origin https://github.com/varunbp06/varun-portfolio.git
+git branch -M main
+git push -u origin main
 ```
 
-## Build Instructions
+## Step 3: Deploy to Vercel
+
+### Option A: Vercel CLI (if installed)
 
 ```bash
-npm install
-npm run build        # outputs to dist/
-npm run dev          # dev server with HMR
+npm i -g vercel
+vercel login
+vercel --prod
 ```
+
+### Option B: Vercel Dashboard (recommended)
+
+1. Go to https://vercel.com/new
+2. Import the `varunbp06/varun-portfolio` repository
+3. Framework preset: **Vite** (auto-detected)
+4. Build command: `npm run build` (auto-detected)
+5. Output directory: `dist` (auto-detected)
+6. Add environment variable:
+   - Name: `VITE_WEB3FORMS_KEY`
+   - Value: `6b6c02b5-52cc-47a3-b5d6-484ecfaa86d1`
+7. Click "Deploy"
+
+## Step 4: Verify Deployment
+
+Visit the deployed URL. Verify:
+
+1. All sections render (Hero, About, Skills, Projects, Education, Certifications, Achievements, Contact)
+2. All social links work:
+   - LinkedIn: https://www.linkedin.com/in/varun-b-p-209756214/
+   - GitHub: https://github.com/varunbp06
+   - WhatsApp: https://wa.me/919902354121
+   - Email: mailto:varunbpvarunbp@gmail.com
+3. Contact form submits successfully
+4. Command Palette opens with Ctrl+K
+5. Scroll to Top button appears on scroll
+6. Reading Progress Bar tracks scroll
+7. "Open To Work" badge visible in navbar
+8. Mobile responsive
+
+## Post-Deployment
+
+Update the canonical URL in `index.html` from `https://varunbp.dev` to your actual Vercel domain or custom domain.

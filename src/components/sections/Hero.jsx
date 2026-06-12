@@ -197,7 +197,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-zinc-800 shadow-2xl">
                 <img
-                  src="/images/profile.png"
+                  src="/images/profile.jpg"
                   alt="Varun B P"
                   className="w-full h-full object-contain"
                   loading="eager"

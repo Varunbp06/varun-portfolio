@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="flex items-center justify-center gap-8 sm:gap-12">
             <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl">
               <img
-                src="/images/profile.png"
+                src="/images/profile.jpg"
                 alt="Varun B P"
                 className="w-full h-full object-contain"
                 loading="lazy"
