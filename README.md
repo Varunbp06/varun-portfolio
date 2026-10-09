@@ -109,3 +109,7 @@ src/
 - Canonical URL
 - robots.txt + sitemap.xml
 - Optimized meta title/description
+
+## License
+
+MIT — see [LICENSE](LICENSE). Copyright (c) 2026 Varun B P.
